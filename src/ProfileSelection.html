@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel=stylesheet type="text/css" href="{{ static_url('stylesheet.css') }}">
+<!--    <script src="/html/starterScript.js"></script>-->
+
+</head>
+<body>
+
+
+    <div class="dropdown center-vertical">
+        <span class="center-vertical" style="display: block; text-align: center">Mouse over me</span>
+        <div class="grid-container">
+            <a href="profile/alice">Alice Smith</a>
+            <a href="profile/bob">Bob Jones</a>
+            <a href="profile/carol">Carol Ling</a>
+            <a href="profile/dave">Dave N. Port</a>
+            <a href="profile/alice">Alice Smith 2</a>
+            <a href="profile/bob">Bob Jones 2</a>
+            <a href="profile/carol">Carol Ling 2</a>
+            <a href="profile/dave">Dave N. Port 2</a>
+            <a href="profile/alice">Alice Smith 3</a>
+            <a href="profile/bob">Bob Jones 3</a>
+            <a href="profile/carol">Carol Ling 3</a>
+            <a href="profile/dave">Dave N. Port 3</a>
+            <a href="profile/alice">Alice Smith 4</a>
+            <a href="profile/bob">Bob Jones 4</a>
+            <a href="profile/carol">Carol Ling 4</a>
+            <a href="profile/dave">Dave N. Port 4</a>
+            <a href="profile/alice">Alice Smith 5</a>
+            <a href="profile/bob">Bob Jones 5</a>
+            <a href="profile/carol">Carol Ling 5</a>
+            <a href="profile/dave">Dave N. Port 5</a>
+
+        </div>
+    </div>
+
+    <p>
+        <input type="button" value="Show first attribute name and value"
+               onclick="listAttributes();">
+    <pre id="result"></pre>
+    </p>
+
+    <script>
+        let gridContainer = document.getElementsByClassName("grid-container")[0];
+        let childNum = 0;
+        // First, let's verify that the paragraph has some attributes
+        for (a of gridContainer.getElementsByTagName("a")){
+            a.style.setProperty('--child-num', parseInt(childNum/4));
+            document.getElementById("result").innerHTML +=  a.style.getPropertyValue('--child-num');
+            childNum += 1;
+        }
+    </script>
+
+</body>
+</html>

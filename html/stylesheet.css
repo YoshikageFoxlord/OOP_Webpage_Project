@@ -1,0 +1,218 @@
+:root {
+    --big-button-up: #AAFF00;
+    --big-button-down: #0BDA51;
+    --big-button-shadow: #228B22;
+    --button-green: #40826D;
+    --dark-green: #023020;
+    --light-grey: #E5E4E2;
+    --dark-grey: #C0C0C0;
+    --r1: 64;
+    --g1: 130;
+    --b1: 109;
+    --r2: 2;
+    --g2: 48;
+    --b2: 32;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+em.urgent {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.center-vertical {
+    display: inline-block;
+    margin: 50% 0 !important;
+    transform: translateY(-50%) !important;
+}
+
+.dropdown {
+  font-family: "Helvetica Neue";
+  position: relative;
+  left: 50%;
+  right: 50%;
+  background-color: var(--big-button-up);
+  padding: 20px;
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+}
+/*
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  left: -50%;
+  top: 0%;
+  margin: 0% 50%;
+  z-index: 1;
+}
+
+.dropdown-content a{
+    position: absolute;
+    display: block;
+    text-align: center;
+}
+
+
+
+.dropdown-content a:nth-child(4n + 1){
+    bottom: 100%;
+}
+
+.dropdown-content a:nth-child(4n + 2){
+    left: 100%;
+}
+
+.dropdown-content a:nth-child(4n + 3){
+    top: 100%;
+}
+
+.dropdown-content a:nth-child(4n){
+    right: 100%;
+    rotate: 180deg;
+
+}
+
+.dropdown-content a:nth-child(even){
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    background-color: #9f9f9f;
+    height: 100%;
+}
+
+.dropdown-content a:nth-child(odd){
+    background-color: #9f9f9f;
+    width: 100%;
+}*/
+
+.grid-container {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+
+    grid-template-columns: auto 100% auto;
+    grid-template-rows: auto 100% auto;
+    background-color: none;
+    left: -50%;
+    top: 0%;
+    margin: 0% 50%;
+    box-sizing: border-box;
+}
+
+
+.grid-container a{
+    display: block;
+    background-color: rgb( calc( var(--r1) + calc( var(--r2) - var(--r1)) * var(--child-num) * 0.15 ),
+        calc( var(--g1) + calc( var(--g2) - var(--g1)) * var(--child-num) * 0.15 ),
+        calc( var(--b1) + calc( var(--b2) - var(--b1)) * var(--child-num) * 0.15 ) );
+    position: absolute;
+    text-align: center;
+    border: 0;
+}
+
+.grid-container a::before{
+    content: var(--child-num);
+}
+
+.grid-container a:nth-child(even){
+    max-height: 100%;
+    max-width: 1.2em;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    height: 500px;
+    width: 1.2em;
+}
+
+.grid-container a:nth-child(odd){
+    max-width: 100%;
+    max-height: 1.2em;
+    width: 100%;
+    height: 100em;
+}
+
+.grid-container a:nth-child(4n + 1){
+    grid-area: 1 / 2 / 2 / 3;
+    bottom: 100%;
+    transform: translateY( calc( -1.2em * var(--child-num) ) );
+
+}
+
+.grid-container a:nth-child(4n + 2){
+    grid-area: 2 / 3 / 3 / 4;
+    left: 100%;
+    transform: translateX( calc( 1.2em * var(--child-num) ) );
+}
+
+.grid-container a:nth-child(4n + 3){
+    grid-area: 3 / 2 / 4 / 3;
+    top: 100%;
+    transform: translateY( calc( 100% * var(--child-num) ) );
+}
+
+.grid-container a:nth-child(4n){
+    grid-area: 2 / 1 / 3 / 2;
+    right: 100%;
+    transform: translateX( calc( 100% * var(--child-num) ) );
+    rotate: 180deg;
+}
+
+/*
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+*/
+.dropdown:hover {
+    background-color: var(--big-button-down);
+    box-shadow: 0.5em -0.5em 0em 0.3em var(--big-button-shadow) inset;
+}
+.dropdown:hover .grid-container {
+  display: inline-grid;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.flex-container img{
+    object-fit: contain;
+    width: 10em;
+    height: 10em;
+}
+
+table {
+    border-collapse: collapse;
+
+}
+
+th, td {
+    padding: 0.5em;
+}
+
+th {
+    font-family: "Helvetica Neue";
+    text-align: right;
+    background-color: var(--big-button-shadow);
+}
+
+td {
+    font-family: "Helvetica";
+}
+
+tr:nth-child(even) {
+    background-color: var(--light-grey);
+}
+
+tr:nth-child(odd) {
+    background-color: var(--dark-grey);
+}

@@ -6,8 +6,18 @@
     <link rel=stylesheet type="text/css" href="{{ static_url('stylesheet.css') }}">
     <script src="/static/starterScript.js"></script>
 </head>
-<body>
+<body onload="registerButton()">
+    <Button id="Button">M-maybe press me? Y-you know, if it's n-not too much trouble . . .</Button>
     <canvas id="myCanvas" style="border:1px solid #d3d3d3;"></canvas>
+
+    <table id="SpinLog" class="roulette-table">
+        <tr>
+            <th>Number</th>
+            <th>Color</th>
+            <th>Parity</th>
+            <th>Pass/Fail</th>
+        </tr>
+    </table>
 
     <script>
         const canvas = document.getElementById("myCanvas");
@@ -90,27 +100,6 @@
             div.style.rotate = -segment * i + Math.PI + "rad";
             document.body.appendChild(div);
         }
-
-        let index = Math.floor(Math.random() * 38) + 1;
-        let num = nums[index];
-
-        console.log(num);
-
-        if (index % 2 == 0)
-            console.log("Rouge");
-        else
-            console.log("Noir");
-
-        if ( num == "00" || (num % 2 == 0 && num != 0) )
-            console.log("Pair");
-        else
-            console.log("Impair");
-
-        if (num == "00" || num > 18)
-            console.log("Passe");
-        else
-            console.log("Manque");
-
     </script>
 
 </body>

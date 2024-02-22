@@ -216,3 +216,21 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: var(--dark-grey);
 }
+
+table.roulette-table
+{
+    font-family: "Impact";
+
+}
+
+table.roulette-table td, th
+{
+    border: 2px solid;
+    border-color: silver;
+}
+
+.roulette-table th
+{
+    background-color: #DAA520;
+    font-family: "Helvetica Neue";
+}

@@ -18,6 +18,12 @@
     box-sizing: border-box;
 }
 
+.disabled
+{
+    opacity: 0.6;
+    disabled: true;
+}
+
 em.urgent {
     color: red;
     font-weight: bold;
@@ -28,6 +34,15 @@ em.urgent {
     display: inline-block;
     margin: 50% 0 !important;
     transform: translateY(-50%) !important;
+}
+
+.center-fixed
+{
+    position: fixed;
+    display: inline-block;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .dropdown {
@@ -190,9 +205,33 @@ em.urgent {
     height: 10em;
 }
 
+img.selectable
+{
+    cursor: pointer;
+}
+
+table.selectable th
+{
+    cursor: pointer;
+}
+
+table.selectable th:hover
+{
+   color: purple;
+}
+
+.disabled .selectable
+{
+    cursor: initial;
+}
+
+.disabled .selectable th
+{
+    color: initial !important;
+}
+
 table {
     border-collapse: collapse;
-
 }
 
 th, td {
@@ -217,13 +256,14 @@ tr:nth-child(odd) {
     background-color: var(--dark-grey);
 }
 
+
+
 table.roulette-table
 {
     font-family: "Impact";
-
 }
 
-table.roulette-table td, th
+table.roulette-table (th, td)
 {
     border: 2px solid;
     border-color: silver;

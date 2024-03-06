@@ -19,8 +19,7 @@ users = {"alice": alice, "bob": bob, "carol": carol, "dave": dave}
 class Handler(tornado.web.RequestHandler):
     def get(self):
         myUser = self.request.path[9:]
-        print(myUser)
-        self.render("ProfileTemplate.html",
+        self.render("Profile.html",
                     name=users[myUser].name,
                     login=users[myUser].login,
                     DOB=users[myUser].dob,

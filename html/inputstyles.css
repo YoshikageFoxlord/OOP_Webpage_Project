@@ -1,0 +1,23 @@
+*
+{
+    box-sizing: border-box;
+}
+
+.flex-container
+{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0.5em;
+}
+
+.fill-parent
+{
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+}
+

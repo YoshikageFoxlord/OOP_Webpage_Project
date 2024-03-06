@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel=stylesheet type="text/css" href="{{ static_url('inputstyles.css') }}">
+    <script src="/static/updateprofile.js"></script>
+</head>
+<body>
+    <div class="flex-container fill-parent">
+        <table>
+            <tr><td id="input-name" style="font-weight: bold;"><td><input id="input-box" type={{type}}>
+            <tr><td id="input-error" colspan=2 style="color: red;">
+<!--        <tr><td>Profile pic: <td><input id="ppic" type='file'>-->
+        </table>
+
+        <button style="margin-top: auto; align-self: flex-end;">Submit</button>
+    </div>
+</body>
+</html>

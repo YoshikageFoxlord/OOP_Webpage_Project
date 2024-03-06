@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A neat quote</title>
+    <meta charset=utf8>
+    <link rel=stylesheet type="text/css" href="{{ static_url('stylesheet.css') }}">
+    <script src="/static/updateprofile.js"></script>
+</head>
+<body>
+
+<hr><br>
+
+<div id="user-info" class="flex-container">
+    <img src={{image}} class="selectable" onclick="popupFile(this, 'file')">
+    <table class="selectable">
+        <tr>
+            <th onclick="popup(this, 'None')">Name:</th>
+            <td id="name-box">{{name}}</td>
+        </tr>
+
+        <tr>
+            <th onclick="popup(this, 'None')" >Login:</th>
+            <td id="login-box">{{login}}</td>
+        </tr>
+
+
+        <tr>
+            <th onclick="popup(this, 'date')">Birthday:</th>
+            <td id="dob-box">{{DOB}}</td>
+        </tr>
+
+        <tr>
+            <th onclick="popup(this, 'None')">Email:</th>
+            <td id="email-box">{{email}}</td>
+        </tr>
+    </table>
+</div>
+
+<iframe id="popWindow" src="/updateprofile" class="center-fixed" style="display: none"></iframe>
+
+</body>
+</html>

@@ -41,7 +41,7 @@ function submit(){
     R.readAsBinaryString(file);
 }
 
-function generic_submit(target){
+function generic_submit(target, userDataKey){
     let inputBox = this.getElementById("input-box");
     let type = inputBox.type;
     let input;
@@ -59,7 +59,7 @@ function generic_submit(target){
     else
         input = inputBox.value;
 
-    let myHeaders = new Headers({"type" : type});
+    let myHeaders = new Headers({"type" : type, "dataKey" : userDataKey});
 
     fetch( "/updateprofile",
         {   method: "POST",
@@ -100,6 +100,7 @@ function popup(caller, myType)
         flags.set("disabled", true);
 
         let target = caller.nextElementSibling;
+        let userDataKey = caller.id;
         let popWindow = document.getElementById("popWindow");
         popWindow.style.display = 'initial';
         popWindow.src = '/updateprofile?type=' + myType;
@@ -109,7 +110,7 @@ function popup(caller, myType)
             let label = popWindow.contentDocument.getElementById("input-name");
             label.innerHTML = "New " + caller.innerHTML;
             let myButton = popWindow.contentDocument.getElementsByTagName("button")[0];
-            myButton.addEventListener("click", () => { my_generic_submit(target) });
+            myButton.addEventListener("click", () => { my_generic_submit(target, userDataKey); });
         };
     }
 }
@@ -123,6 +124,8 @@ function popupFile(caller, myType)
         flags.set("disabled", true);
 
         let target = caller;
+        let userDataKey = caller.id;
+
         let popWindow = document.getElementById("popWindow");
         popWindow.style.display = 'initial';
         popWindow.src = '/updateprofile?type=' + myType;
@@ -132,7 +135,7 @@ function popupFile(caller, myType)
             let label = popWindow.contentDocument.getElementById("input-name");
             label.innerHTML = "New Profile Pic";
             let myButton = popWindow.contentDocument.getElementsByTagName("button")[0];
-            myButton.addEventListener("click", () => { my_generic_submit(target) });
+            myButton.addEventListener("click", () => { my_generic_submit(target, userDataKey) });
         };
     }
 }

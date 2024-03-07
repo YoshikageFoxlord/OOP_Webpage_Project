@@ -4,7 +4,7 @@ activeClients=[]
 
 class Handler(tornado.websocket.WebSocketHandler):
     def open(self):
-        print("THE CONENECTION IS OPEN ")
+        print("THE CONNECTION IS OPEN ")
         for c in activeClients:
             c.write_message("Someone has joined the chat");
         activeClients.append(self)

@@ -11,26 +11,26 @@
 <hr><br>
 
 <div id="user-info" class="flex-container">
-    <img src={{image}} class="selectable" onclick="popupFile(this, 'file')">
+    <img id="pfp" src={{image}} class="selectable" onclick="popupFile(this, 'file')">
     <table class="selectable">
         <tr>
-            <th onclick="popup(this, 'None')">Name:</th>
+            <th id="name" onclick="popup(this, 'None')">Name:</th>
             <td id="name-box">{{name}}</td>
         </tr>
 
         <tr>
-            <th onclick="popup(this, 'None')" >Login:</th>
+            <th id="login" onclick="popup(this, 'None')" >Login:</th>
             <td id="login-box">{{login}}</td>
         </tr>
 
 
         <tr>
-            <th onclick="popup(this, 'date')">Birthday:</th>
+            <th id="dob" onclick="popup(this, 'date')">Birthday:</th>
             <td id="dob-box">{{DOB}}</td>
         </tr>
 
         <tr>
-            <th onclick="popup(this, 'None')">Email:</th>
+            <th id="email" onclick="popup(this, 'None')">Email:</th>
             <td id="email-box">{{email}}</td>
         </tr>
     </table>

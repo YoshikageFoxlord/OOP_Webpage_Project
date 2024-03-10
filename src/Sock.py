@@ -1,4 +1,5 @@
 import tornado.websocket
+import json
 
 activeClients=[]
 
@@ -10,9 +11,10 @@ class Handler(tornado.websocket.WebSocketHandler):
         activeClients.append(self)
 
     def on_message(self, msg):
+        msg = msg.split(",")
         print("SERVER GOT:", msg)
         for c in activeClients:
-            c.write_message(msg)
+            c.write_message(json.dumps(msg))
 
     def on_close(self):
         activeClients.remove(self)

@@ -14,13 +14,13 @@ function sendIt(){
     let elem = document.getElementById("usertext");
     let txt = elem.value;
     console.log(txt);
-    sock.send(txt);
+    sock.send(txt + ", JOJO!");
     elem.value="";
 
 }
 
 function gotMessage(event){
-    let data = event.data;
+    let data = JSON.parse(event.data);
     console.log(data);
     let cbox = document.getElementById("chatbox");
     cbox.value += "\n" + data;

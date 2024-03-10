@@ -45,50 +45,58 @@ function generic_submit(target, userDataKey){
     let inputBox = this.getElementById("input-box");
     let type = inputBox.type;
     let input;
+    let myUser = document.URL;
+    let myHeaders = new Headers({"type" : type, "dataKey" : userDataKey, user: myUser});
 
     if (type == 'file')
     {
-        input = btoa(inputBox.files[0]);
-
         let reader = new FileReader();
 
-        reader.onload = (event) => {target.src = event.target.result;};
+        reader.onload = (event) => {target.src = event.target.result;
+                                    input = btoa(event.target.result);
+                                    generic_submit_fetch(input, myHeaders, target);
+                                    };
 
         reader.readAsDataURL(inputBox.files[0]);
     }
     else
+    {
         input = inputBox.value;
+        generic_submit_fetch(input, myHeaders, target);
+    }
 
-    let myHeaders = new Headers({"type" : type, "dataKey" : userDataKey});
+}
 
+function generic_submit_fetch(input, myHeaders, target)
+{
     fetch( "/updateprofile",
-        {   method: "POST",
-            body: JSON.stringify(input),
-            headers: myHeaders
-        })
-        .then( (response) => {
-            if (response.status != 200)
-            {
-                console.log(response.statusText);
-                let popWindow = document.getElementById("popWindow");
-                let errorBox = popWindow.contentDocument.getElementById("input-error");
-                errorBox.innerHTML = response.statusText;
-                throw Error("Invalid input.");
-            }
-            return response.text();
-        })
-        .then((txt) => {
-            let output = JSON.parse(txt);
-            console.log("server said:", output);
-            target.innerHTML = input;
-            document.getElementById("user-info").classList.remove("disabled");
-            flags.set("disabled", false);
+    {   method: "POST",
+        body: JSON.stringify(input),
+        headers: myHeaders
+    })
+    .then( (response) => {
+        if (response.status != 200)
+        {
+            console.log(response.statusText);
             let popWindow = document.getElementById("popWindow");
-            popWindow.style.display = 'none';
+            let errorBox = popWindow.contentDocument.getElementById("input-error");
+            errorBox.innerHTML = response.statusText;
+            throw Error("Invalid input.");
+        }
+        return response.text();
+    })
+    .then((txt) => {
+        let output = JSON.parse(txt);
+        console.log("server said:", output);
+        target.innerHTML = input;
+        document.getElementById("user-info").classList.remove("disabled");
+        flags.set("disabled", false);
+        let popWindow = document.getElementById("popWindow");
+        popWindow.style.display = 'none';
 
-        }).catch( (err) => {
-            console.log("Uh oh", err);
-        });
+    }).catch( (err) => {
+        console.log("Uh oh", err);
+    });
 }
 
 function popup(caller, myType)

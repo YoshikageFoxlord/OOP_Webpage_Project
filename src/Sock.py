@@ -11,6 +11,7 @@ class Handler(tornado.websocket.WebSocketHandler):
 
     def on_message(self, msg):
         print("SERVER GOT:", msg)
+        #Maybe I should do some typechecking here? I think all the checking I need is done on the JS side though.
         for c in activeClients:
             c.write_message(msg)
 
